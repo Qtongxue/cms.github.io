@@ -11,5 +11,6 @@
                 }
             ]
         ]
-    ]
+    ],
+    "ignore": "./views/lib/mui-master/dist/js/mui.js"
 }

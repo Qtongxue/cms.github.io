@@ -9,6 +9,8 @@ Vue.use(VueRouter)
 import VueResource from 'vue-resource'
 // 2.2 安装 vue-resource
 Vue.use(VueResource)
+//设置请求的根路径
+Vue.http.options.root = "http://www.liulongbin.top:3005"
 
 // import MintUI from 'mint-ui'
 // import 'mint-ui/lib/style.css'
@@ -19,13 +21,20 @@ import './lib/mui-master/dist/css/mui.min.css'
 import './lib/mui-master/examples/hello-mui/css/icons-extra.css'
 
 //按需导入mint-ui中的组件
-import { Header, Swipe, SwipeItem } from "mint-ui"
+import { Header, Swipe, SwipeItem, Button } from "mint-ui"
 Vue.component(Header.name, Header)
 // import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 Vue.component(Swipe.name, Swipe);
 Vue.component(SwipeItem.name, SwipeItem);
+Vue.component(Button.name, Button);
 //导入APP根组件
 import app from "./App.vue"
+
+import moment from 'moment'
+Vue.filter('dateFormat', function (dataStr, pattern = "YYYY-MM-DD HH:mm:SS") {
+    return moment(dataStr).format(pattern)
+})
+
 
 //导入路由
 import router from './router.js'
