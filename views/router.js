@@ -8,6 +8,9 @@ import SearchContainer from './components/SearchContainer.vue'
 import newsList from './components/news/newsList.vue'
 import newsInfo from './components/news/newsInfo.vue'
 import PhotoList from './components/photos/PhotoList.vue'
+import PhotoInfo from './components/photos/PhotoInfo.vue'
+import GoodsList from './components/goods/GoodsList.vue'
+ 
 //创建路由对象
 export default new VueRouter({
     routes: [
@@ -19,6 +22,11 @@ export default new VueRouter({
         { path: "/home/newsList", component: newsList },
         { path: "/home/newsInfo/:id", component: newsInfo },
         { path: "/home/photoList", component: PhotoList },
+        { path: "/home/photoInfo/:id", component: PhotoInfo },
+        { path: "/home/goodsList", component: GoodsList },
+
+        
+
 
 
     ],
