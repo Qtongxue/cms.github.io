@@ -68,6 +68,7 @@ export default {
 </script>
 <style scoped>
 .cmt-container h3 {
+  text-align: center;
   font-size: 18px;
 }
 .cmt-container textarea {

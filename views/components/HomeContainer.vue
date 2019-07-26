@@ -1,11 +1,7 @@
 <template>
   <div>
     <!-- 轮播图 -->
-    <mt-swipe :auto="4000">
-      <mt-swipe-item v-for="item in lunbotuList" :key="item.id">
-        <img :src="item.img" alt />
-      </mt-swipe-item>
-    </mt-swipe>
+    <swiper :swiperlist="lunbotuList" :isfull="true"></swiper>
 
     <!-- 九宫格 -->
     <ul class="mui-table-view mui-grid-view mui-grid-9">
@@ -49,49 +45,46 @@
   </div>
 </template>
 <script>
-import {Toast} from 'mint-ui'
+import { Toast } from "mint-ui";
+import swiper from "./subcomponents/swiper.vue";
 export default {
-    data() {
-      return {
-        lunbotuList: [] // 保存轮播图的数组
-      };
-    },
-    created() {
-      this.getLunbotu();
-    },
-    methods: {
-      getLunbotu() {
-        // 获取轮播图数据的方法
-        this.$http.get("api/getlunbo").then(result => {
-          console.log(result.body);
-          if (result.body.status === 0) {
-            // 成功了
-            this.lunbotuList = result.body.message;
-          } else {
-            // 失败的
-            Toast("加载轮播图失败。。。");
-          }
-        });
-      }
+  data() {
+    return {
+      lunbotuList: [] // 保存轮播图的数组
+    };
+  },
+  created() {
+    this.getLunbotu();
+  },
+  methods: {
+    getLunbotu() {
+      // 获取轮播图数据的方法
+      this.$http.get("api/getlunbo").then(result => {
+        console.log(result.body);
+        if (result.body.status === 0) {
+          // 成功了
+          this.lunbotuList = result.body.message;
+        } else {
+          // 失败的
+          Toast("加载轮播图失败。。。");
+        }
+      });
     }
+  },
+  components: {
+    swiper
+  }
 };
 </script>
 <style scoped>
-.mint-swipe {
-  height: 200px;
-}
-img {
-  width: 100%;
-  height: 100%;
-}
 .mui-grid-view.mui-grid-9 {
   background-color: #fff;
   border: none;
 }
 .mui-grid-view.mui-grid-9 img {
-    width: 60px;
-    height: 60px;
-  }
+  width: 60px;
+  height: 60px;
+}
 .mui-media-body {
   font-size: 13px;
 }
